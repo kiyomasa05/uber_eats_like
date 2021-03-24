@@ -1,24 +1,13 @@
-# README
+# このアプリの概要
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+RailsとReactでUberEats風SPAアプリケーションをつくってみよう！
 
-Things you may want to cover:
+という教材で作成したアプリです。
 
-* Ruby version
+## モデル
+こちらのサイトを参考に作成しています。
 
-* System dependencies
+https://www.ubereats.com/jp/feed?pl=JTdCJTIyYWRkcmVzcyUyMiUzQSUyMiVFOCU4OCVCOSVFNiVBOSU4QiVFOSVBNyU4NSUyMiUyQyUyMnJlZmVyZW5jZSUyMiUzQSUyMkNoSUpRY3ZQLVhpQUdHQVJqVWl2bzdKZjRrRSUyMiUyQyUyMnJlZmVyZW5jZVR5cGUlMjIlM0ElMjJnb29nbGVfcGxhY2VzJTIyJTJDJTIybGF0aXR1ZGUlMjIlM0EzNS43MDE3MzU3JTJDJTIybG9uZ2l0dWRlJTIyJTNBMTM5Ljk4NTM4MTUlN0Q%3D
 
-* Configuration
+https://www.techpit.jp/courses/138/curriculums/141/sections/1046/parts/4141
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
