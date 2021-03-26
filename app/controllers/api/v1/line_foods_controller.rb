@@ -1,7 +1,21 @@
 module Api
   module V1
     class LineFoodsController < ApplicationController
-      before_action :set_food,only: %i[create]
+      before_action :set_food,only: %i[create,replace]
+
+      def index
+        line_foods=LineFood.active #scope:activeで指定したactiveのもの全てを代入
+        if line_foods.exists?  #activeな仮注文があれば
+          render json:{
+            line_foods_ids:line_foods.map{|line_food|line_food.id},#それぞれにidを入れる
+            restaurant:line_foods[0].restaurant,#restaurantにfoodの〇番目のrestaurant
+            count:line_foods.sum{|line_food|line_food[:count]},#合計を入れる
+            amount:line_foods.sum{|line_food|line_food.total_amount},
+          },status: :ok
+          else
+            render json:{},status: :no_content
+          end
+        end
 
       def create 
         #例外パターン 
@@ -15,13 +29,29 @@ module Api
 
           set_line_food(@ordered_food)
 
-
         if @line_food.save#保存できれば
           render json:{
             line_food:@line_food
           },status: :created
         else
           render json:{},status: :internal_server_error
+        end
+      end
+
+      def replace  
+        #activeなLineFoodで他店舗のLineFood一つずつに対して更新
+        LineFood.active.other_restaurant(@ordered_food.restaurant.id).each do |line_food|
+          line_food.update_attributes(:active,false)#activeカラムをfalseにする
+        end
+
+        set_line_food(@ordered_food)
+
+        if @line_food.save
+          render json:{
+            line_food:@line_food
+          },status: :created
+        else
+            render json:{},status: :internal_server_error
         end
       end
 
