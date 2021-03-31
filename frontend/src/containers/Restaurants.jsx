@@ -93,7 +93,7 @@ export const Restaurants = () => {
       </MainCoverImageWrapper>
       <RestaurantsContentsList>
         {
-          state.fetchState === REQUEST_STATE.LOADING ?//loadingの状態なら スケルトン＝ロード状態を表示
+          state.fetchState === REQUEST_STATE.LOADING ?//loadingの状態なら スケルトン＝ロード状態を表示 三項演算子  理論値？trueの処理:falseの処理
             <Fragment>
               <Skeleton variant="rect" width={450} height={300} />
               <Skeleton variant="rect" width={450} height={300} />
