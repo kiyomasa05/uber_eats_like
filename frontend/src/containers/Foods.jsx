@@ -1,4 +1,4 @@
-import React, { Fragment,  useReducer, useEffect ,useState } from 'react';
+import React, { Fragment, useReducer, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useHistory, Link } from "react-router-dom";
 
@@ -75,7 +75,7 @@ export const Foods = ({
 
   useEffect(() => {
     dispatch({ type: foodsActionTypes.FETCHING });
-    fetchFoods(match.params.restaurantsId)
+      fetchFoods(match.params.restaurantsId)//sいる？
       .then((data) => {
         dispatch({
           type: foodsActionTypes.FETCH_SUCCESS,
@@ -97,8 +97,8 @@ export const Foods = ({
             ...state,
             isOpenOrderDialog: false,
             isOpenNewOrderDialog: true,
-            existingResutaurautName: e.response.data.existing_restaurant,
-            newResutaurautName: e.response.data.new_restaurant,
+            existingRestaurantName: e.response.data.existing_restaurant,
+            newRestaurantName: e.response.data.new_restaurant,
           })
         } else {
           throw e;
@@ -121,7 +121,7 @@ export const Foods = ({
           <MainLogoImage src={MainLogo} alt="main logo" />
         </Link>
         <BagIconWrapper>
-          <Link to="/orders">
+          <Link to='/orders'>
             <ColoredBagIcon fontSize="large" />
           </Link>
         </BagIconWrapper>
@@ -138,7 +138,7 @@ export const Foods = ({
                 )
               }
             </Fragment>
-          :
+            :
             foodsState.foodsList.map(food =>
               <ItemWrapper key={food.id}>
                 <FoodWrapper

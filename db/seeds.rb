@@ -1,6 +1,6 @@
 3.times do |n|
   restaurant = Restaurant.new(
-    name:"レストラン名_#{n}",
+    name:"レストラン_#{n}",
     fee:100,
     time_required:10
   )
