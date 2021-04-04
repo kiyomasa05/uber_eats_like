@@ -59,7 +59,7 @@ const ItemWrapper = styled.div`
 `;
 
 export const Foods = ({
-  match
+  match //match.params.restaurantsIdとするとReactRouterでマッチした:restaurantsIdを取得
 }) => {
   const initialState = {
     isOpenOrderDialog: false,
@@ -75,7 +75,7 @@ export const Foods = ({
 
   useEffect(() => {
     dispatch({ type: foodsActionTypes.FETCHING });
-      fetchFoods(match.params.restaurantsId)//sいる？
+      fetchFoods(match.params.restaurantsId)//restaurantidを取得
       .then((data) => {
         dispatch({
           type: foodsActionTypes.FETCH_SUCCESS,
@@ -144,7 +144,7 @@ export const Foods = ({
                 <FoodWrapper
                   food={food}
                   onClickFoodWrapper={
-                    (food) => setState({
+                    (food) => setState({//引数foodをselectedfoodに代入
                       ...state,
                       selectedFood: food,
                       isOpenOrderDialog: true,

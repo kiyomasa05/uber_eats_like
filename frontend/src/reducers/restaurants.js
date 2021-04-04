@@ -11,7 +11,7 @@ export const restaurantsActionTypes = {
 }
 
 export const restaurantsReducer = (state, action) => {
-  switch (action.type) {//action.typeが
+  switch (action.type) {//action.type（restaurantActionTypes）が
     case restaurantsActionTypes.FETCHING://FETCHINGの時
       return {
         ...state,
@@ -20,7 +20,7 @@ export const restaurantsReducer = (state, action) => {
     case restaurantsActionTypes.FETCH_SUCCESS:
       return {
         fetchState: REQUEST_STATE.OK,
-        restaurantsList: action.payload.restaurants,
+        restaurantsList: action.payload.restaurants,//更新する。引数actionの指定したpayload(restaurant)に入れる　使うrestaurant.JSX側で定義
       };
     default:
       throw new Error();
